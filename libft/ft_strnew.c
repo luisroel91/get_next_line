@@ -6,7 +6,7 @@
 /*   By: luiroel <luiroel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 13:37:00 by luiroel           #+#    #+#             */
-/*   Updated: 2020/02/26 21:17:43 by luiroel          ###   ########.fr       */
+/*   Updated: 2020/03/04 21:20:42 by luiroel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,10 @@ char		*ft_strnew(size_t size)
 {
 	char	*str;
 
-	str = (char *)malloc(sizeof(char) * size + 1);
-	if (!str)
+	if (!(str = (char *)malloc(sizeof(char) * (size + 1))))
 	{
 		return (NULL);
 	}
-	ft_bzero(str, size + 1);
+	ft_bzero(str, (size + 1));
 	return (str);
 }
