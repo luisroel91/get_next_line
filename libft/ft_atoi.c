@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luiroel <luiroel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/25 13:48:40 by luiroel           #+#    #+#             */
-/*   Updated: 2020/03/04 16:08:39 by luiroel          ###   ########.fr       */
+/*   Created: 2020/02/03 04:18:57 by luiroel           #+#    #+#             */
+/*   Updated: 2020/02/26 21:17:47 by luiroel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# define BUFF_SIZE 1000
-# include <stdio.h>
-# include <fcntl.h>
-# include "libft/libft.h"
-
-typedef struct		s_line
+int		ft_atoi(const char *str)
 {
-	char			*temp;
-	size_t			line_sz;
-}					t_line;
+	int	i;
+	int	sign;
+	int result;
 
-int					get_next_line(const int fd, char **line);
-
-#endif
+	i = 0;
+	result = 0;
+	sign = 1;
+	while (ft_iswhitespace(str[i]))
+	{
+		i++;
+	}
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (ft_isdigit(str[i]))
+	{
+		result = result * 10 + (str[i] - '0');
+		i++;
+	}
+	return (result * sign);
+}

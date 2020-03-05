@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luiroel <luiroel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/25 13:48:40 by luiroel           #+#    #+#             */
-/*   Updated: 2020/03/04 16:08:39 by luiroel          ###   ########.fr       */
+/*   Created: 2020/02/04 16:43:05 by luiroel           #+#    #+#             */
+/*   Updated: 2020/02/26 21:17:43 by luiroel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# define BUFF_SIZE 1000
-# include <stdio.h>
-# include <fcntl.h>
-# include "libft/libft.h"
-
-typedef struct		s_line
+void		*ft_memchr(const void *s, int c, size_t n)
 {
-	char			*temp;
-	size_t			line_sz;
-}					t_line;
+	char			*scpy;
+	char			conv;
+	size_t			i;
 
-int					get_next_line(const int fd, char **line);
-
-#endif
+	scpy = (char *)s;
+	conv = (unsigned char)c;
+	i = 0;
+	while (i < n)
+	{
+		if (scpy[i] == conv)
+		{
+			return ((void *)&scpy[i]);
+		}
+		i++;
+	}
+	return (NULL);
+}

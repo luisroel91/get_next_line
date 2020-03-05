@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luiroel <luiroel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/25 13:48:40 by luiroel           #+#    #+#             */
-/*   Updated: 2020/03/04 16:08:39 by luiroel          ###   ########.fr       */
+/*   Created: 2020/02/03 04:11:15 by luiroel           #+#    #+#             */
+/*   Updated: 2020/02/26 21:17:43 by luiroel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# define BUFF_SIZE 1000
-# include <stdio.h>
-# include <fcntl.h>
-# include "libft/libft.h"
-
-typedef struct		s_line
+int		ft_isalnum(int c)
 {
-	char			*temp;
-	size_t			line_sz;
-}					t_line;
-
-int					get_next_line(const int fd, char **line);
-
-#endif
+	if (ft_isalpha(c) || ft_isdigit(c))
+	{
+		return (1);
+	}
+	else
+	{
+		return (0);
+	}
+}

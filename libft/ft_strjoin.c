@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luiroel <luiroel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/25 13:48:40 by luiroel           #+#    #+#             */
-/*   Updated: 2020/03/04 16:08:39 by luiroel          ###   ########.fr       */
+/*   Created: 2020/02/18 15:55:07 by luiroel           #+#    #+#             */
+/*   Updated: 2020/02/26 21:17:43 by luiroel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# define BUFF_SIZE 1000
-# include <stdio.h>
-# include <fcntl.h>
-# include "libft/libft.h"
-
-typedef struct		s_line
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char			*temp;
-	size_t			line_sz;
-}					t_line;
+	char	*newstr;
+	size_t	len;
 
-int					get_next_line(const int fd, char **line);
-
-#endif
+	if (!s1 || !s2)
+		return (NULL);
+	len = ft_strlen(s1) + ft_strlen(s2);
+	newstr = (char *)malloc(sizeof(*newstr) * (len + 1));
+	if (newstr == NULL)
+	{
+		return (NULL);
+	}
+	ft_strcpy(newstr, s1);
+	ft_strcat(newstr, s2);
+	return (newstr);
+}

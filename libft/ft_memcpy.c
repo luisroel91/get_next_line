@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luiroel <luiroel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/25 13:48:40 by luiroel           #+#    #+#             */
-/*   Updated: 2020/03/04 16:08:39 by luiroel          ###   ########.fr       */
+/*   Created: 2020/02/03 19:35:52 by luiroel           #+#    #+#             */
+/*   Updated: 2020/02/26 21:17:43 by luiroel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# define BUFF_SIZE 1000
-# include <stdio.h>
-# include <fcntl.h>
-# include "libft/libft.h"
+/*
+** Not casting here because, well, wtf do we do if we
+** get an array of ints or something else? 🤷‍♂️
+*/
 
-typedef struct		s_line
+void		*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char			*temp;
-	size_t			line_sz;
-}					t_line;
+	char	*dcpy;
+	char	*scpy;
+	size_t	i;
 
-int					get_next_line(const int fd, char **line);
-
-#endif
+	i = 0;
+	dcpy = dst;
+	scpy = (char *)src;
+	if (!dst && !src)
+	{
+		return (dst);
+	}
+	while (i < n)
+	{
+		dcpy[i] = scpy[i];
+		i++;
+	}
+	return (dst);
+}
