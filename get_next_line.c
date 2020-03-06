@@ -6,17 +6,40 @@
 /*   By: luiroel <luiroel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 13:53:08 by luiroel           #+#    #+#             */
-/*   Updated: 2020/03/05 17:55:51 by luiroel          ###   ########.fr       */
+/*   Updated: 2020/03/05 18:07:07 by luiroel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+char	*ft_strndup(const char *s1, size_t size)
+{
+	char	*s2;
+	size_t	i;
+
+	i = 0;
+	if (!(s2 = ft_strnew(size)))
+	{
+		return (NULL);
+	}
+	while (s1[i] && i < size)
+	{
+		s2[i] = s1[i];
+		i++;
+	}
+	return (s2);
+}
 
 t_list	*get_line(int fd, t_list **list)
 {
 	t_list	*temp;
 
 	if (!list)
+	{
+		return (NULL);
+	}
+	temp = *list;
+	while (temp)
 	{
 		if ((int)temp->content_size == fd)
 		{
