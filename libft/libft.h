@@ -6,7 +6,7 @@
 /*   By: luiroel <luiroel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 03:35:28 by luiroel           #+#    #+#             */
-/*   Updated: 2020/03/05 17:04:13 by luiroel          ###   ########.fr       */
+/*   Updated: 2020/03/06 14:46:55 by luiroel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@
 # define FT_LIGHTPURPLE	"\033[1;35m"
 # define FT_LIGHTCYAN	"\033[1;36m"
 # define FT_WHITE		"\033[1;37m"
+# define MAX_FD 4096
+# define EOL '\n'
 
 typedef struct		s_list
 {
@@ -95,6 +97,7 @@ char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char				*ft_strncat(char *s1, const char *s2, size_t n);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_strncpy(char *dst, const char *src, size_t len);
+char				*ft_strndup(const char *s1, size_t size);
 int					ft_strnequ(const char *s1, const char *s2, size_t n);
 char				*ft_strnew(size_t size);
 char				*ft_strnstr(const char *big,
