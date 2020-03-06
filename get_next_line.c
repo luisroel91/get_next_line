@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_get_next_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luiroel <luiroel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 13:53:08 by luiroel           #+#    #+#             */
-/*   Updated: 2020/03/06 14:46:55 by luiroel          ###   ########.fr       */
+/*   Updated: 2020/03/06 14:50:09 by luiroel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,17 +81,14 @@ int		get_next_line(const int fd, char **line)
 	char			*temp;
 	char			buff[BUFF_SIZE + 1];
 
-	if (fd < 0 || !line || (read(fd, buff, 0)) < 0 || (!(frame = get_line(fd, &list))))
-	{
+	if (fd < 0 || !line || (read(fd, buff, 0)) < 0 ||
+		(!(frame = get_line(fd, &list))))
 		return (-1);
-	}
 	temp = frame->content;
 	retcount = read_line(fd, &temp);
 	frame->content = temp;
 	if (!retcount && !*temp)
-	{
 		return (0);
-	}
 	retcount = copy_line(line, frame->content, EOL);
 	temp = frame->content;
 	if (temp[retcount] != '\0')
@@ -100,8 +97,6 @@ int		get_next_line(const int fd, char **line)
 		free(temp);
 	}
 	else
-	{
 		temp[0] = '\0';
-	}
 	return (1);
 }
